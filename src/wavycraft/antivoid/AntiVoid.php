@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace wavycraft\antivoid;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
 use wavycraft\antivoid\event\AntiVoidListener;
 use wavycraft\antivoid\command\PurchaseCommand;
 use wavycraft\antivoid\economy\EconomyManager;
@@ -15,12 +16,15 @@ class AntiVoid extends PluginBase {
     private $saveManager;
     private $economyManager;
     private array $allowedWorlds;
+    private $messages;
 
     public function onLoad() : void{
         self::$instance = $this;
     }
 
     public function onEnable() : void{
+        $this->saveResource("messages.yml");
+        $this->messages = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
         $this->saveDefaultConfig();
         $maxSaves = (int) $this->getConfig()->get("max_saves");
         $this->saveManager = new SaveManager($this->getDataFolder(), $maxSaves);
@@ -44,5 +48,9 @@ class AntiVoid extends PluginBase {
 
     public function getAllowedWorlds() : array{
         return $this->allowedWorlds;
+    }
+
+    public function getMessages() : Config{
+        return $this->messages;
     }
 }
