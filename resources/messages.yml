@@ -1,0 +1,36 @@
+# When a user tries to run the command out of game.
+player_only: "§cThis command can only be used in-game..."
+
+# When a player tries to input negative/non-number characters.
+numbers_only: "§cInvalid amount entered, Please enter only positive numbers!"
+
+# When a player doesn't have enough money in their balance to purchase the saves.
+insignificant_balance: "§cYou do not have enough money to buy §e{saves_amount}§c saves, Total cost: ${total_cost}"
+
+# When a player successfully buys more saves.
+purchase_successful: "§aYou have successfully purchased §e{saves_bought}§a saves for a total cost of ${total_cost}"
+
+# When the purchase transaction failed(shouln't occur).
+purchase_failed: "§cTransaction failed... Please try again!"
+
+# When a player falls into a void and they have saves left this message gets sent along with the subtitle.
+teleportation_message: "§aTeleported to a safe location, You have §e{saves_left}§a saves left!"
+
+# When a player falls into a void and they have saves left this subtitle gets sent along with the message.
+teleportation_subtitle: "Be careful next time!"
+
+# Notification title(Toast).
+teleportation_toast_title: "§l§eSaves Remaining"
+
+# Notification indicating how many saves the player has left.
+teleportation_toast_body: "You have §e{saves_left}§f more saves left!"
+
+# When a player has no more saves left.
+teleportation_failed: "§cYou have no saves left, Falling into the void!"
+
+# Form Section:
+# Look in-game for a better reference.
+form_title: "Buy Saves"
+form_label: "Purchase additional saves, Each save costs §a${price}"
+form_input_1: "Enter the number of saves you want to buy:"
+form_input_2: "Amount of saves"
