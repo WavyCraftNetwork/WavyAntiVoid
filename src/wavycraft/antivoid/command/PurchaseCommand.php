@@ -6,17 +6,23 @@ namespace wavycraft\antivoid\command;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\PluginOwned;
+use pocketmine\plugin\Plugin;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use wavycraft\antivoid\AntiVoid;
 use jojoe77777\FormAPI\CustomForm;
 use Closure;
 
-class PurchaseCommand extends Command {
+class PurchaseCommand extends Command implements PluginOwned {
 
     public function __construct() {
         parent::__construct("buysaves", "Purchase additional saves", "/buysaves", ["purchasesaves", "saveshop", "sshop"]);
         $this->setPermission("wavyantivoid.cmd");
+    }
+
+    public function getOwningPlugin(): Plugin {
+        return AntiVoid::getInstance();
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
