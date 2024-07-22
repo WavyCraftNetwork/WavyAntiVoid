@@ -25,7 +25,7 @@ class AntiVoidListener implements Listener {
                 $player->teleport($player->getWorld()->getSpawnLocation());
                 $player->sendMessage("Teleported to a safe location!");
                 $player->sendSubtitle("Be careful next time!");
-                $player->sendToast("You have {$savesLeft} more saves left!");
+                $player->sendToastNotification("You have {$savesLeft} more saves left!");
             } else {
                 $player->sendMessage("You have no saves left, Falling into the void!");
                 $player->sendSubtitle("Purchase more saves!");
