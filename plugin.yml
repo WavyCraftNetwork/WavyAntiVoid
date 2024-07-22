@@ -3,6 +3,10 @@ version: 1.0.0
 author: WavyCraft
 api: 5.0.0
 main: wavycraft\antivoid\AntiVoid
+
+permissions:
+  wavyantivoid.cmd:
+    default: true
 # Made for WavyCraft©
 # Creation: June 15, 2024 at 8:52am PST
 # **PUBLIC PLUGIN**
