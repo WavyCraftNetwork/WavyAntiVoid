@@ -12,7 +12,7 @@ use wavycraft\antivoid\economy\EconomyManager;
 
 class AntiVoid extends PluginBase {
 
-    private static self $instance;
+    public static self $instance;
     private $saveManager;
     private $economyManager;
     private array $allowedWorlds;
@@ -26,7 +26,7 @@ class AntiVoid extends PluginBase {
         $this->saveResource("messages.yml");
         $this->messages = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
         $this->saveDefaultConfig();
-        $maxSaves = (int) $this->getConfig()->get("max_saves");
+        $maxSaves = (int) $this->getConfig()->get("starting_saves");
         $this->saveManager = new SaveManager($this->getDataFolder(), $maxSaves);
         $this->economyManager = new EconomyManager($this);
         $this->allowedWorlds = $this->getConfig()->get("worlds", []);
