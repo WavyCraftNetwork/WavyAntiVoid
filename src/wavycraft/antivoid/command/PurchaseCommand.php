@@ -21,7 +21,7 @@ class PurchaseCommand extends Command {
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
         if (!$sender instanceof Player) {
-            $sender->sendMessage(TextFormat::RED . "This command can only be used in-game.");
+            $sender->sendMessage(TextFormat::RED . "This command can only be used in-game...");
             return false;
         }
 
@@ -41,18 +41,18 @@ class PurchaseCommand extends Command {
 
             $amount = intval($data[1]);
             if ($amount <= 0) {
-                $player->sendMessage(TextFormat::RED . "Invalid amount entered.");
+                $player->sendMessage(TextFormat::RED . "Invalid amount entered, Please enter only positive numbers!");
                 return;
             }
 
-            $costPerSave = 100;
+            $costPerSave = AntiVoid::getInstance()->getConfig()->get("saves_price");
             $totalCost = $amount * $costPerSave;
 
             $economyManager = AntiVoid::getInstance()->getEconomyManager();
 
             $economyManager->getMoney($player, function($balance) use ($player, $amount, $totalCost, $economyManager) {
                 if ($balance < $totalCost) {
-                    $player->sendMessage(TextFormat::RED . "You do not have enough money to buy $amount saves. Total cost: $totalCost");
+                    $player->sendMessage(TextFormat::RED . "You do not have enough money to buy §e{$amount}§c saves. Total cost: $totalCost");
                     return;
                 }
 
@@ -60,16 +60,17 @@ class PurchaseCommand extends Command {
                     if ($success) {
                         $saveManager = AntiVoid::getInstance()->getSaveManager();
                         $saveManager->addSaves($player, $amount);
-                        $player->sendMessage(TextFormat::GREEN . "You have successfully purchased §e{$amount}§f saves for a total cost of§a $" . $totalCost);
+                        $player->sendMessage(TextFormat::GREEN . "You have successfully purchased §e{$amount}§a saves for a total cost of§a $" . $totalCost);
                     } else {
-                        $player->sendMessage(TextFormat::RED . "Transaction failed. Please try again.");
+                        $player->sendMessage(TextFormat::RED . "Transaction failed... Please try again!");
                     }
                 });
             });
         });
 
+        $price = AntiVoid::getInstance()->getConfig()->get("saves_price");
         $form->setTitle("Buy Saves");
-        $form->addLabel("Purchase additional saves, Each save costs §la$100");
+        $form->addLabel("Purchase additional saves, Each save cost §a$" . $price);
         $form->addInput("Enter the number of saves you want to buy:", "Amount of saves");
         $player->sendForm($form);
     }
