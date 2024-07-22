@@ -21,7 +21,7 @@ class EconomyManager {
     private ?Plugin $eco;
     private ?ClosureAPI $api;
     private Currency $currency;
-    private Loader $plugin;
+    private AntiVoid $plugin;
 
     public function __construct(AntiVoid $plugin) {
         $this->plugin = $plugin;
