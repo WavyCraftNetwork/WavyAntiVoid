@@ -1,3 +1,7 @@
 # Max Saves
 # Each time a player falls into the void it gets counted until they reach the max amount of saves, If the player runs out of saves they simply die in the void.
 max_saves: "3"
+
+# Saves Price
+# The price of each save the players buy.
+saves_price: "100"
