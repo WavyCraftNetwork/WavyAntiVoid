@@ -24,11 +24,11 @@ class AntiVoidListener implements Listener {
                 $saveManager->useSave($player);
                 $savesLeft--;
                 $player->teleport($player->getWorld()->getSpawnLocation());
-                $player->sendMessage(AntiVoid::getInstance->getMessages()->get(str_replace("{saves_left}", (string)$savesLeft, "teleportation_message")));
-                $player->sendSubtitle(AntiVoid::getInstance->getMessages()->get("teleportation_subtitle"));
-                $player->sendToastNotification(AntiVoid::getInstance->getMessages()->get("teleportation_toast_title"), AntiVoid::getInstance->getMessages()->get(str_replace("{saves_left}", (string)$savesLeft, "teleportation_toast_body")));
+                $player->sendMessage(AntiVoid::getInstance()->getMessages()->get(str_replace("{saves_left}", (string)$savesLeft, "teleportation_message")));
+                $player->sendSubtitle(AntiVoid::getInstance()->getMessages()->get("teleportation_subtitle"));
+                $player->sendToastNotification(AntiVoid::getInstance()->getMessages()->get("teleportation_toast_title"), AntiVoid::getInstance->getMessages()->get(str_replace("{saves_left}", (string)$savesLeft, "teleportation_toast_body")));
             } else {
-                $player->sendMessage(AntiVoid::getInstance->getMessages()->get("teleportation_failed"));
+                $player->sendMessage(AntiVoid::getInstance()->getMessages()->get("teleportation_failed"));
             }
         }
     }
