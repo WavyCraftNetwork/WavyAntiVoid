@@ -12,9 +12,11 @@ class AntiVoidListener implements Listener {
 
     public function onPlayerMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
+        $worldName = $player->getWorld()->getFolderName();
         $y = $event->getTo()->getY();
 
-        if ($y < 0) {
+        $allowedWorlds = AntiVoid::getInstance()->getAllowedWorlds();
+        if (in_array($worldName, $allowedWorlds, true) && $y < 0) {
             $saveManager = AntiVoid::getInstance()->getSaveManager();
             $savesLeft = $saveManager->getSaves($player);
 
