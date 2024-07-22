@@ -4,6 +4,8 @@ author: WavyCraft
 api: 5.0.0
 main: wavycraft\antivoid\AntiVoid
 
+softdepend: ["BedrockEconomy", "EconomyAPI"]
+
 permissions:
   wavyantivoid.cmd:
     default: true
