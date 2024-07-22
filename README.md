@@ -11,7 +11,7 @@ This plugin gives each player a certain amount of saves to prevent them from dyi
 # Command
 ```
 /buysaves
-default: op
+default: true
 permission: wavyantivoid.cmd
 ```
 
