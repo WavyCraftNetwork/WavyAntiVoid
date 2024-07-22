@@ -52,7 +52,9 @@ class PurchaseCommand extends Command {
 
             $economyManager->getMoney($player, function($balance) use ($player, $amount, $totalCost, $economyManager) {
                 if ($balance < $totalCost) {
-                    $player->sendMessage(AntiVoid::getInstance()->getMessages()->get(str_replace(["{saves_amount}", "{total_cost}"], [(string)$amount, (string)$totalCost], "insignificant_balance")));
+                    $message = AntiVoid::getInstance()->getMessages()->get("insignificant_balance");
+                    $message = str_replace(["{saves_amount}", "{total_cost}"], [(string)$amount, (string)$totalCost], $message);
+                    $player->sendMessage($message);
                     return;
                 }
 
@@ -60,7 +62,9 @@ class PurchaseCommand extends Command {
                     if ($success) {
                         $saveManager = AntiVoid::getInstance()->getSaveManager();
                         $saveManager->addSaves($player, $amount);
-                        $player->sendMessage(AntiVoid::getInstance()->getMessages()->get(str_replace(["{saves_bought}", "{total_cost}"], [(string)$amount, (string)$totalCost], "purchase_successful")));
+                        $message = AntiVoid::getInstance()->getMessages()->get("purchase_successful");
+                        $message = str_replace(["{saves_bought}", "{total_cost}"], [(string)$amount, (string)$totalCost], $message);
+                        $player->sendMessage($message);
                     } else {
                         $player->sendMessage(AntiVoid::getInstance()->getMessages()->get("purchase_failed"));
                     }
@@ -70,7 +74,7 @@ class PurchaseCommand extends Command {
 
         $price = AntiVoid::getInstance()->getConfig()->get("saves_price");
         $form->setTitle(AntiVoid::getInstance()->getMessages()->get("form_title"));
-        $form->addLabel(AntiVoid::getInstance()->getMessages()->get(str_replace("{price}", (string)$price, "form_label")));
+        $form->addLabel(str_replace("{price}", (string)$price, AntiVoid::getInstance()->getMessages()->get("form_label")));
         $form->addInput(AntiVoid::getInstance()->getMessages()->get("form_input_1"), AntiVoid::getInstance()->getMessages()->get("form_input_2"));
         $player->sendForm($form);
     }
