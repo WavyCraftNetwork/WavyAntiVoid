@@ -52,7 +52,7 @@ class EconomyManager {
     }
 
     public function reduceMoney(Player $player, int $amount, Closure $callback): void {
-        if ($this->eco == null) {
+        if ($this->eco === null) {
             $this->plugin->getLogger()->warning("You don't have an Economy plugin");
             return;
         }
@@ -66,20 +66,24 @@ class EconomyManager {
                 $player->getName(),
                 (int)$amount,
                 $decimals,
-                fn() => $callback ? $callback(true) : null,
-                fn() => $callback ? $callback(false) : null
+                function() use ($callback) {
+                    $callback(true);
+                },
+                function() use ($callback) {
+                    $callback(false);
+                }
             );
         }
     }
 
     public function addMoney(Player $player, int $amount, Closure $callback): void {
-        if ($this->eco == null) {
+        if ($this->eco === null) {
             $this->plugin->getLogger()->warning("You don't have an Economy plugin");
             return;
         }
 
         if ($this->eco instanceof EconomyAPI) {
-            $callback($this->eco->addMoney($player->getName(), $amount, EconomyAPI::RET_SUCCESS));
+            $callback($this->eco->addMoney($player->getName(), $amount) === EconomyAPI::RET_SUCCESS);
         } elseif ($this->eco instanceof BedrockEconomy) {
             $decimals = (int)(explode('.', strval($amount))[1] ?? 0);
             $this->api->add(
@@ -87,8 +91,12 @@ class EconomyManager {
                 $player->getName(),
                 (int)$amount,
                 $decimals,
-                fn() => $callback ? $callback(true) : null,
-                fn() => $callback ? $callback(false) : null
+                function() use ($callback) {
+                    $callback(true);
+                },
+                function() use ($callback) {
+                    $callback(false);
+                }
             );
         }
     }
