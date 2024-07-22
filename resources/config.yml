@@ -5,3 +5,9 @@ max_saves: "3"
 # Saves Price
 # The price of each save the players buy.
 saves_price: "100"
+
+# Allowed Worlds
+# Specify which worlds the anti void occurs.
+worlds:
+  - Hub
+  - world
