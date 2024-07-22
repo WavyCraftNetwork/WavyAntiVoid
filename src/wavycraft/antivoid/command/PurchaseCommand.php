@@ -71,7 +71,7 @@ class PurchaseCommand extends Command {
         $price = AntiVoid::getInstance()->getConfig()->get("saves_price");
         $form->setTitle(AntiVoid::getInstance()->getMessages()->get("form_title"));
         $form->addLabel(AntiVoid::getInstance()->getMessages()->get(str_replace("{price}", (string)$price, "form_label")));
-        $form->addInput(AntiVoid::getInstance()->getMessages()->get("form_input_1"), AntiVoid::getInstance->getMessages()->get("form_input_2"));
+        $form->addInput(AntiVoid::getInstance()->getMessages()->get("form_input_1"), AntiVoid::getInstance()->getMessages()->get("form_input_2"));
         $player->sendForm($form);
     }
 }
