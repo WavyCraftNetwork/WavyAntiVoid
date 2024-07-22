@@ -8,6 +8,9 @@ This plugin gives each player a certain amount of saves to prevent them from dyi
 - [x] Data gets saved/tracked
 - [x] Purchase more saves
 
+# TODO
+Nothing planned at the moment, open an issue/pull requesy if you have any idea's!
+
 # Command
 ```
 /buysaves
