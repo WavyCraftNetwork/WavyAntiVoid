@@ -28,7 +28,7 @@ class AntiVoidListener implements Listener {
                 $player->sendToast("You have {$savesLeft} more saves left!");
             } else {
                 $player->sendMessage("You have no saves left, Falling into the void!");
-                $player->sendSubtitle("Purchase more saves!")
+                $player->sendSubtitle("Purchase more saves!");
             }
         }
     }
