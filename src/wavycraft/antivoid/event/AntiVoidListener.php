@@ -28,8 +28,6 @@ class AntiVoidListener implements Listener {
                 $message = AntiVoid::getInstance()->getMessages()->get("teleportation_message");
                 $message = str_replace("{saves_left}", (string)$savesLeft, $message);
                 $player->sendMessage($message);
-
-                $player->sendSubtitle(AntiVoid::getInstance()->getMessages()->get("teleportation_subtitle"));
                 
                 $toastTitle = AntiVoid::getInstance()->getMessages()->get("teleportation_toast_title");
                 $toastBody = str_replace("{saves_left}", (string)$savesLeft, AntiVoid::getInstance()->getMessages()->get("teleportation_toast_body"));
