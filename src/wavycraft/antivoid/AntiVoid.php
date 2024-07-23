@@ -17,6 +17,7 @@ class AntiVoid extends PluginBase {
     private $economyManager;
     private array $allowedWorlds;
     private $messages;
+    private bool $enableAllWorlds;
 
     public function onLoad() : void{
         self::$instance = $this;
@@ -30,6 +31,7 @@ class AntiVoid extends PluginBase {
         $this->saveManager = new SaveManager($this->getDataFolder(), $maxSaves);
         $this->economyManager = new EconomyManager($this);
         $this->allowedWorlds = $this->getConfig()->get("worlds", []);
+        $this->enableAllWorlds = $this->getConfig()->get("enable_all_worlds", false);
         $this->getServer()->getPluginManager()->registerEvents(new AntiVoidListener(), $this);
         $this->getServer()->getCommandMap()->register("buysaves", new PurchaseCommand());
     }
@@ -48,6 +50,10 @@ class AntiVoid extends PluginBase {
 
     public function getAllowedWorlds() : array{
         return $this->allowedWorlds;
+    }
+
+    public function isEnableAllWorlds() : bool{
+        return $this->enableAllWorlds;
     }
 
     public function getMessages() : Config{
