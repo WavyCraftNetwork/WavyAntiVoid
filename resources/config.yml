@@ -6,6 +6,10 @@ starting_saves: "3"
 # The price of each save the players buy.
 saves_price: "100"
 
+# Enable All Worlds
+# If true, the anti-void feature is enabled for all worlds, otherwise, the worlds array will be used.
+enable_all_worlds: false
+
 # Allowed Worlds
 # Specify which worlds the anti void occurs.
 worlds:
