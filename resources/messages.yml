@@ -16,9 +16,6 @@ purchase_failed: "§cTransaction failed... Please try again!"
 # When a player falls into a void and they have saves left this message gets sent along with the subtitle.
 teleportation_message: "§aTeleported to a safe location, You have §e{saves_left}§a saves left!"
 
-# When a player falls into a void and they have saves left this subtitle gets sent along with the message.
-teleportation_subtitle: "Be careful next time!"
-
 # Notification title(Toast).
 teleportation_toast_title: "§l§eSaves Remaining"
 
